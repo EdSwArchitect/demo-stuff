@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.bscllc.demo.skills.api.proto";
+
+package proto;
+
+message WirePayload {
+  int64 loc_alt = 1;
+  string dev_last_failure = 2;
+  int32  opc_c00_54 = 3;
+  int64 dev_comms_failures = 4;
+  int32 pms_c00_50 = 5;
+  string when_captured = 6;
+  double  loc_lat = 7;
+  string loc_olc = 8;
+  int64 dev_ntp_count = 9;
+  string service_uploaded = 10;
+  int32 lnd_7128ec = 11;
+  double bat_voltage = 12;
+  string service_handler = 13;
+  string device_urn = 14;
+  bool dev_motion = 15;
+  int64 dev_uptime = 16;
+  double env_humid = 17;
+  int32 lnd_7318c = 18;
+  int32 pms_pm01_0 = 19;
+  double dev_temp = 20;
+  double env_press = 21;
+  double opc_pm01_0 = 22;
+  int32 lnd_78017w = 23;
+  int32 dev_oneshots = 24;
+  double dev_press = 25;
+  int64 opc_csecs = 26;
+  int64 pms_c02_50 = 27;
+  int64  device = 28;
+  int64 pms_csecs = 29;
+  int32 lnd_7318u = 30;
+  int32 lnd_712u = 31;
+  int32 opc_c01_00 = 32;
+  int64 dev_received_bytes = 33;
+  int32 pms_c01_00 = 34;
+  double bat_charge = 35;
+  int64 pms_c00_30 = 36;
+  int32 opc_c00_38 = 37;
+  int64 pms_pm10_0 = 38;
+  int32 opc_pm10_0 = 39;
+  int64 pms_c05_00 = 40;
+  int32 opc_c05_00 = 41;
+  int64 dev_oneshot_seconds = 42;
+  int32 opc_c02_10 = 43;
+  double dev_humid = 44;
+  double bat_current = 45;
+  int32 dev_motion_events = 46;
+  string gateway_received = 47;
+  int32 opc_c10_00 = 48;
+  int64 dev_transmitted_bytes = 49;
+  string service_md5 = 50;
+  string service_transport = 51;
+  double loc_lon = 52;
+  int32 dev_restarts = 53;
+  bool dev_test = 54;
+  int32 dev_free_memory = 55;
+  int64 pms_pm02_5 = 56;
+  int32 opc_pm02_5 = 57;
+  int64 pms_c10_00 = 58;
+  double env_temp = 59;
+  int32 gateway_lora_snr = 60;
+
+}
+
+message PayloadRequest {
+  string id = 1;
+}
+service WireService {
+  rpc GetWirePayload(PayloadRequest) returns (WirePayload) {}
+}

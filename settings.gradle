@@ -10,4 +10,5 @@
 rootProject.name = 'demo-skills'
 include('app')
 include 'cache'
+include 'api'
 

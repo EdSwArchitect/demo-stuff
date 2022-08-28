@@ -9,7 +9,11 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'maven-publish'
 }
+
+group 'com.bscllc.demo.skills'
+version '0.0.1-SNAPSHOT'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -26,5 +30,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'demo.skills.App'
+    mainClass = 'com.bscllc.demo.skills.App'
 }
