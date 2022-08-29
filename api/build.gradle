@@ -14,6 +14,7 @@ plugins {
     id 'com.google.protobuf' version '0.8.19'
     id 'idea'
     id 'maven-publish'
+    id 'application'
 }
 
 group 'com.bscllc.demo.skills'
@@ -71,18 +72,9 @@ protobuf {
     generatedFilesBaseDir = "$projectDir/src/main/generated"
 }
 
-//sourceSets {
-//    main {
-//        proto {
-//            srcDir 'main/generated/protobuf'
-//            srcDir 'main/generated/protocolbuffers'
-//        }
-//        java {
-//            srcDirs 'generated/source/proto/main/grpc'
-//            srcDirs 'generated/source/proto/main/java'
-//        }
-//    }
-//}
+application {
+    mainClass = 'com.bscllc.demo.skills.api.WireServiceServer'
+}
 
 test {
     useJUnitPlatform()

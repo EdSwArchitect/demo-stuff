@@ -57,6 +57,31 @@ public class WireServiceClient {
         try {
             WireServiceClient client = new WireServiceClient(channel);
             client.payload(id);
+
+            logger.info("Waiting 15 seconds for cache call for length");
+            Thread.sleep(1000* 15L);
+
+            CacheServiceClient cacheClient = new CacheServiceClient(channel);
+            cacheClient.length(id);
+
+            logger.info("Putting entries in cache");
+            Thread.sleep(1000* 15L);
+
+            cacheClient.putIt();
+
+            logger.info("Now getting length.");
+            cacheClient.length(id);
+
+            logger.info("Now getting list");
+            logger.info("------ All the things -----");
+
+            cacheClient.getIt();
+
+            logger.info("------ NOTHING -------");
+
+            cacheClient.getDoesntExist();
+
+
         } finally {
             // ManagedChannels use resources like threads and TCP connections. To prevent leaking these
             // resources the channel should be shut down when it will no longer be used. If it may be used

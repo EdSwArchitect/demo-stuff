@@ -5,7 +5,7 @@ import com.bscllc.demo.skills.cache.Payload;
 
 public class PayloadMap {
 
-    public Payload wireToPayload(WirePayload wire) {
+    public static Payload wireToPayload(WirePayload wire) {
         Payload payload = new Payload();
 
         payload.setBatCharge(wire.getBatCharge());
@@ -70,4 +70,71 @@ public class PayloadMap {
 
         return payload;
     }
+
+    public static WirePayload payloadToWire(Payload payload) {
+        WirePayload.Builder builder = WirePayload.newBuilder();
+
+        builder.setBatCharge(payload.getBatCharge());
+        builder.setBatCurrent(payload.getBatCurrent());
+        builder.setBatVoltage(payload.getBatVoltage());
+        builder.setDevice(payload.getDevice());
+        builder.setDevHumid(payload.getDevHumid());
+        builder.setDevCommsFailures(payload.getDevCommsFailures());
+        builder.setDevFreeMemory(payload.getDevFreeMemory());
+        builder.setDeviceUrn(payload.getDeviceUrn());
+        builder.setDevLastFailure(payload.getDevLastFailure());
+//        builder.setDevMotion(payload.getDevMotion());
+        builder.setDevMotionEvents(payload.getDevMotionEvents());
+        builder.setDevNtpCount(payload.getDevNtpCount());
+        builder.setDevOneshots(payload.getDevOneshots());
+        builder.setDevOneshotSeconds(payload.getDevOneshotSeconds());
+        builder.setDevPress(payload.getDevPress());
+        builder.setDevReceivedBytes(payload.getDevReceivedBytes());
+        builder.setDevRestarts(payload.getDevRestarts());
+        builder.setDevTemp(payload.getDevTemp());
+//        builder.setDevTest(payload.getDevTest());
+        builder.setDevTransmittedBytes(payload.getDevTransmittedBytes());
+        builder.setDevUptime(payload.getDevUptime());
+        builder.setEnvHumid(payload.getEnvHumid());
+        builder.setEnvPress(payload.getEnvPress());
+        builder.setEnvTemp(payload.getEnvTemp());
+        builder.setGatewayLoraSnr(payload.getGateway_lora_snr());
+        builder.setGatewayReceived(payload.getGatewayReceived());
+        builder.setLnd712U(payload.getLnd712u());
+        builder.setLnd7128Ec(payload.getLnd7128ec());
+        builder.setLnd7318C(payload.getLnd7318C());
+        builder.setLnd7318U(payload.getLnd7318u());
+        builder.setLnd78017W(payload.getLnd78017w());
+        builder.setLocLon(payload.getLoc_lon());
+        builder.setLocAlt(payload.getLocAlt());
+        builder.setLocOlc(payload.getLocOlc());
+        builder.setOpcC0100(payload.getOpcC010());
+        builder.setOpcC0038(payload.getOpcC0038());
+        builder.setOpcC0054(payload.getOpcC0054());
+        builder.setOpcC0210(payload.getOpcC0210());
+        builder.setOpcC0500(payload.getOpcC0500());
+        builder.setOpcC1000(payload.getOpcC1000());
+        builder.setOpcCsecs(payload.getOpcCsecs());
+        builder.setOpcPm010(payload.getOpcPm010());
+        builder.setOpcPm025(payload.getOpcPm025());
+        builder.setOpcPm100(payload.getOpcPm100());
+        builder.setPmsC0030(payload.getPmsC0030());
+        builder.setPmsC0050(payload.getPmsC0050());
+//        builder.setPmsC0100(payload.getPmsC0100());
+        builder.setPmsC0250(payload.getPmsC0250());
+        builder.setPmsC0500(payload.getPmsC0500());
+        builder.setPmsC1000(payload.getPmsC1000());
+        builder.setPmsCsecs(payload.getPmsCsecs());
+        builder.setPmsPm010(payload.getPmsPm010());
+        builder.setPmsPm025(payload.getPmsPm025());
+        builder.setPmsPm100(payload.getPmsPm100());
+        builder.setServiceHandler(payload.getServiceHandler());
+        builder.setServiceMd5(payload.getServiceMd5());
+        builder.setServiceTransport(payload.getServiceTransport());
+        builder.setServiceUploaded(payload.getServiceUploaded());
+        builder.setWhenCaptured(payload.getWhenCaptured());
+
+        return builder.build();
+    }
+
 }

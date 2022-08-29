@@ -338,7 +338,7 @@ private static final long serialVersionUID = 0L;
           }
           case 440: {
 
-            devFreeMemory_ = input.readInt32();
+            devFreeMemory_ = input.readInt64();
             break;
           }
           case 448: {
@@ -1238,13 +1238,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int DEV_FREE_MEMORY_FIELD_NUMBER = 55;
-  private int devFreeMemory_;
+  private long devFreeMemory_;
   /**
-   * <code>int32 dev_free_memory = 55;</code>
+   * <code>int64 dev_free_memory = 55;</code>
    * @return The devFreeMemory.
    */
   @java.lang.Override
-  public int getDevFreeMemory() {
+  public long getDevFreeMemory() {
     return devFreeMemory_;
   }
 
@@ -1479,8 +1479,8 @@ private static final long serialVersionUID = 0L;
     if (devTest_ != false) {
       output.writeBool(54, devTest_);
     }
-    if (devFreeMemory_ != 0) {
-      output.writeInt32(55, devFreeMemory_);
+    if (devFreeMemory_ != 0L) {
+      output.writeInt64(55, devFreeMemory_);
     }
     if (pmsPm025_ != 0L) {
       output.writeInt64(56, pmsPm025_);
@@ -1713,9 +1713,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(54, devTest_);
     }
-    if (devFreeMemory_ != 0) {
+    if (devFreeMemory_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(55, devFreeMemory_);
+        .computeInt64Size(55, devFreeMemory_);
     }
     if (pmsPm025_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -2031,7 +2031,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getDevTest());
     hash = (37 * hash) + DEV_FREE_MEMORY_FIELD_NUMBER;
-    hash = (53 * hash) + getDevFreeMemory();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getDevFreeMemory());
     hash = (37 * hash) + PMS_PM02_5_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPmsPm025());
@@ -2286,7 +2287,7 @@ private static final long serialVersionUID = 0L;
 
       devTest_ = false;
 
-      devFreeMemory_ = 0;
+      devFreeMemory_ = 0L;
 
       pmsPm025_ = 0L;
 
@@ -2603,7 +2604,7 @@ private static final long serialVersionUID = 0L;
       if (other.getDevTest() != false) {
         setDevTest(other.getDevTest());
       }
-      if (other.getDevFreeMemory() != 0) {
+      if (other.getDevFreeMemory() != 0L) {
         setDevFreeMemory(other.getDevFreeMemory());
       }
       if (other.getPmsPm025() != 0L) {
@@ -4729,33 +4730,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int devFreeMemory_ ;
+    private long devFreeMemory_ ;
     /**
-     * <code>int32 dev_free_memory = 55;</code>
+     * <code>int64 dev_free_memory = 55;</code>
      * @return The devFreeMemory.
      */
     @java.lang.Override
-    public int getDevFreeMemory() {
+    public long getDevFreeMemory() {
       return devFreeMemory_;
     }
     /**
-     * <code>int32 dev_free_memory = 55;</code>
+     * <code>int64 dev_free_memory = 55;</code>
      * @param value The devFreeMemory to set.
      * @return This builder for chaining.
      */
-    public Builder setDevFreeMemory(int value) {
+    public Builder setDevFreeMemory(long value) {
       
       devFreeMemory_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 dev_free_memory = 55;</code>
+     * <code>int64 dev_free_memory = 55;</code>
      * @return This builder for chaining.
      */
     public Builder clearDevFreeMemory() {
       
-      devFreeMemory_ = 0;
+      devFreeMemory_ = 0L;
       onChanged();
       return this;
     }

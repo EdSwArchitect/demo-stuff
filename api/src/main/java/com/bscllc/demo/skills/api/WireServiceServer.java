@@ -1,11 +1,12 @@
 package com.bscllc.demo.skills.api;
 
-import com.bscllc.demo.skills.api.proto.PayloadRequest;
-import com.bscllc.demo.skills.api.proto.WirePayload;
-import com.bscllc.demo.skills.api.proto.WireServiceGrpc;
+import com.bscllc.demo.skills.api.impl.CacheServiceImpl;
+import com.bscllc.demo.skills.api.proto.*;
+import com.bscllc.demo.skills.cache.PayloadCache;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,11 @@ import java.util.logging.Logger;
 public class WireServiceServer {
     private Server server;
     private static final Logger logger = Logger.getLogger(WireServiceServer.class.getName());
+    private PayloadCache cache;
+
+    public WireServiceServer() {
+        this.cache = new PayloadCache();
+    }
 
 
     static class WireServiceImpl extends WireServiceGrpc.WireServiceImplBase {
@@ -31,14 +37,33 @@ public class WireServiceServer {
 //
 //        super.getWirePayload(request, responseObserver);
         }
-
     }
+
+//    static class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase {
+//        @Override
+//        public void getWirePayload(GetPayloadRequest request, StreamObserver<CachePayloadResponse> responseObserver) {
+//            super.getWirePayload(request, responseObserver);
+//        }
+//
+//        @Override
+//        public void putWirePayloads(CachePutPayloadRequest request, StreamObserver<CachePutPayloadResponse> responseObserver) {
+//            super.putWirePayloads(request, responseObserver);
+//        }
+//
+//        @Override
+//        public void getLength(CacheLengthRequest request, StreamObserver<CacheLengthResponse> responseObserver) {
+//            CacheLengthResponse response = CacheLengthResponse.newBuilder().setLength(55L).build();
+//            responseObserver.onNext(response);
+//            responseObserver.onCompleted();
+//        }
+//    }
 
     public void start() throws IOException {
         /* The port on which the server should run */
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new WireServiceImpl())
+                .addService(new CacheServiceImpl())
                 .build()
                 .start();
 

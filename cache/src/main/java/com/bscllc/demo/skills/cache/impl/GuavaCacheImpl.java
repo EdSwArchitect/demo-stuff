@@ -39,7 +39,11 @@ public class GuavaCacheImpl implements MyCache {
                         new CacheLoader<String, List<Payload>>() {
                             @Override
                             public List<Payload> load(String key) throws Exception {
-                                return serviceValues.get(key);
+                                if (serviceValues.containsKey(key)) {
+                                    return serviceValues.get(key);
+                                } else {
+                                    return new ArrayList<Payload>();
+                                }
                             }
 
                             @Override
@@ -59,15 +63,20 @@ public class GuavaCacheImpl implements MyCache {
                 );
     }
 
-
     @Override
     public List<Payload> getPayloadList(String key) {
-
         try {
-            return payloadCache.get(key);
+            List<Payload>results = payloadCache.get(key);
+
+            if (results != null) {
+                return results;
+            } else {
+                return new ArrayList<Payload>();
+            }
+
         } catch (ExecutionException e) {
-            e.printStackTrace();
-            return null;
+//            e.printStackTrace();
+            return new ArrayList<Payload>();
         }
     }
 

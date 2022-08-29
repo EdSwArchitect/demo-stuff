@@ -386,10 +386,10 @@ public interface WirePayloadOrBuilder extends
   boolean getDevTest();
 
   /**
-   * <code>int32 dev_free_memory = 55;</code>
+   * <code>int64 dev_free_memory = 55;</code>
    * @return The devFreeMemory.
    */
-  int getDevFreeMemory();
+  long getDevFreeMemory();
 
   /**
    * <code>int64 pms_pm02_5 = 56;</code>

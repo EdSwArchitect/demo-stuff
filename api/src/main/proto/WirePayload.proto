@@ -60,7 +60,7 @@ message WirePayload {
   double loc_lon = 52;
   int32 dev_restarts = 53;
   bool dev_test = 54;
-  int32 dev_free_memory = 55;
+  int64 dev_free_memory = 55;
   int64 pms_pm02_5 = 56;
   int32 opc_pm02_5 = 57;
   int64 pms_c10_00 = 58;
@@ -74,4 +74,42 @@ message PayloadRequest {
 }
 service WireService {
   rpc GetWirePayload(PayloadRequest) returns (WirePayload) {}
+}
+
+
+message GetPayloadRequest {
+  string id = 1;
+}
+
+message CachePayloadResponse {
+  repeated WirePayload payloads = 1;
+}
+
+message CachePutPayloadRequest {
+  string id = 1;
+  repeated WirePayload payloads = 2;
+}
+
+message CachePutPayloadResponse {
+  bool succeeded = 1;
+}
+
+message CacheLengthRequest {
+}
+
+message CacheLengthResponse {
+  int64 length = 1;
+}
+
+message CacheGetInfoRequest {
+}
+
+message CacheGetInfoResponse {
+  string info = 1;
+}
+
+service CacheService {
+  rpc GetWirePayload(GetPayloadRequest) returns (CachePayloadResponse) {}
+  rpc PutWirePayloads(CachePutPayloadRequest) returns (CachePutPayloadResponse) {}
+  rpc GetLength(CacheLengthRequest) returns (CacheLengthResponse) {}
 }
