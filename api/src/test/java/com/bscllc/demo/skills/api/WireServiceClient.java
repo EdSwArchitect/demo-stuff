@@ -73,13 +73,18 @@ public class WireServiceClient {
             cacheClient.length(id);
 
             logger.info("Now getting list");
-            logger.info("------ All the things -----");
+            logger.info("------ All the first_things -----");
 
             cacheClient.getIt();
 
             logger.info("------ NOTHING -------");
 
             cacheClient.getDoesntExist();
+
+
+            logger.info("------ GET ALL -------");
+
+            cacheClient.getAll();
 
 
         } finally {

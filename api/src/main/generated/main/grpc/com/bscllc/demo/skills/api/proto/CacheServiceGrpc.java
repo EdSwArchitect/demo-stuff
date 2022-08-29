@@ -108,6 +108,37 @@ public final class CacheServiceGrpc {
     return getGetLengthMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.bscllc.demo.skills.api.proto.CacheGetAllRequest,
+      com.bscllc.demo.skills.api.proto.CacheGetAllResponse> getGetAllMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAll",
+      requestType = com.bscllc.demo.skills.api.proto.CacheGetAllRequest.class,
+      responseType = com.bscllc.demo.skills.api.proto.CacheGetAllResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.bscllc.demo.skills.api.proto.CacheGetAllRequest,
+      com.bscllc.demo.skills.api.proto.CacheGetAllResponse> getGetAllMethod() {
+    io.grpc.MethodDescriptor<com.bscllc.demo.skills.api.proto.CacheGetAllRequest, com.bscllc.demo.skills.api.proto.CacheGetAllResponse> getGetAllMethod;
+    if ((getGetAllMethod = CacheServiceGrpc.getGetAllMethod) == null) {
+      synchronized (CacheServiceGrpc.class) {
+        if ((getGetAllMethod = CacheServiceGrpc.getGetAllMethod) == null) {
+          CacheServiceGrpc.getGetAllMethod = getGetAllMethod =
+              io.grpc.MethodDescriptor.<com.bscllc.demo.skills.api.proto.CacheGetAllRequest, com.bscllc.demo.skills.api.proto.CacheGetAllResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAll"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bscllc.demo.skills.api.proto.CacheGetAllRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bscllc.demo.skills.api.proto.CacheGetAllResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CacheServiceMethodDescriptorSupplier("GetAll"))
+              .build();
+        }
+      }
+    }
+    return getGetAllMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -177,6 +208,13 @@ public final class CacheServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetLengthMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAll(com.bscllc.demo.skills.api.proto.CacheGetAllRequest request,
+        io.grpc.stub.StreamObserver<com.bscllc.demo.skills.api.proto.CacheGetAllResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -200,6 +238,13 @@ public final class CacheServiceGrpc {
                 com.bscllc.demo.skills.api.proto.CacheLengthRequest,
                 com.bscllc.demo.skills.api.proto.CacheLengthResponse>(
                   this, METHODID_GET_LENGTH)))
+          .addMethod(
+            getGetAllMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.bscllc.demo.skills.api.proto.CacheGetAllRequest,
+                com.bscllc.demo.skills.api.proto.CacheGetAllResponse>(
+                  this, METHODID_GET_ALL)))
           .build();
     }
   }
@@ -241,6 +286,14 @@ public final class CacheServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetLengthMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAll(com.bscllc.demo.skills.api.proto.CacheGetAllRequest request,
+        io.grpc.stub.StreamObserver<com.bscllc.demo.skills.api.proto.CacheGetAllResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -276,6 +329,13 @@ public final class CacheServiceGrpc {
     public com.bscllc.demo.skills.api.proto.CacheLengthResponse getLength(com.bscllc.demo.skills.api.proto.CacheLengthRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetLengthMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.bscllc.demo.skills.api.proto.CacheGetAllResponse getAll(com.bscllc.demo.skills.api.proto.CacheGetAllRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllMethod(), getCallOptions(), request);
     }
   }
 
@@ -316,11 +376,20 @@ public final class CacheServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetLengthMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.bscllc.demo.skills.api.proto.CacheGetAllResponse> getAll(
+        com.bscllc.demo.skills.api.proto.CacheGetAllRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_WIRE_PAYLOAD = 0;
   private static final int METHODID_PUT_WIRE_PAYLOADS = 1;
   private static final int METHODID_GET_LENGTH = 2;
+  private static final int METHODID_GET_ALL = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -350,6 +419,10 @@ public final class CacheServiceGrpc {
         case METHODID_GET_LENGTH:
           serviceImpl.getLength((com.bscllc.demo.skills.api.proto.CacheLengthRequest) request,
               (io.grpc.stub.StreamObserver<com.bscllc.demo.skills.api.proto.CacheLengthResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL:
+          serviceImpl.getAll((com.bscllc.demo.skills.api.proto.CacheGetAllRequest) request,
+              (io.grpc.stub.StreamObserver<com.bscllc.demo.skills.api.proto.CacheGetAllResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -415,6 +488,7 @@ public final class CacheServiceGrpc {
               .addMethod(getGetWirePayloadMethod())
               .addMethod(getPutWirePayloadsMethod())
               .addMethod(getGetLengthMethod())
+              .addMethod(getGetAllMethod())
               .build();
         }
       }

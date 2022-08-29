@@ -125,6 +125,22 @@ public class CacheServiceClient {
 
     }
 
+    public void getAll() {
+        CacheGetAllRequest request = CacheGetAllRequest.newBuilder().build();
+        CacheGetAllResponse response;
+
+        try {
+            response = blockingStub.getAll(request);
+        } catch (StatusRuntimeException e) {
+            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+            return;
+        }
+        logger.info(String.format("The payload get all count: %d", response.getPayloadsCount()));
+
+        logger.info("Response: " + response.toString());
+
+    }
+
     public static void main(String[] args) throws Exception {
         String id = "Edwin";
         // Access a service running on the local machine on port 50051

@@ -64,6 +64,26 @@ public final class WirePayloadOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_CacheGetInfoResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_CacheGetAllRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_CacheGetAllRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_WirePayloadList_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_WirePayloadList_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_CacheGetAllResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_CacheGetAllResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_proto_CacheGetAllResponse_PayloadsEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_proto_CacheGetAllResponse_PayloadsEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -114,17 +134,24 @@ public final class WirePayloadOuterClass {
       "PayloadResponse\022\021\n\tsucceeded\030\001 \001(\010\"\024\n\022Ca" +
       "cheLengthRequest\"%\n\023CacheLengthResponse\022" +
       "\016\n\006length\030\001 \001(\003\"\025\n\023CacheGetInfoRequest\"$" +
-      "\n\024CacheGetInfoResponse\022\014\n\004info\030\001 \001(\t2L\n\013" +
-      "WireService\022=\n\016GetWirePayload\022\025.proto.Pa" +
-      "yloadRequest\032\022.proto.WirePayload\"\0002\363\001\n\014C" +
-      "acheService\022I\n\016GetWirePayload\022\030.proto.Ge" +
-      "tPayloadRequest\032\033.proto.CachePayloadResp" +
-      "onse\"\000\022R\n\017PutWirePayloads\022\035.proto.CacheP" +
-      "utPayloadRequest\032\036.proto.CachePutPayload" +
-      "Response\"\000\022D\n\tGetLength\022\031.proto.CacheLen" +
-      "gthRequest\032\032.proto.CacheLengthResponse\"\000" +
-      "B$\n com.bscllc.demo.skills.api.protoP\001b\006" +
-      "proto3"
+      "\n\024CacheGetInfoResponse\022\014\n\004info\030\001 \001(\t\"\024\n\022" +
+      "CacheGetAllRequest\"7\n\017WirePayloadList\022$\n" +
+      "\010payloads\030\001 \003(\0132\022.proto.WirePayload\"\232\001\n\023" +
+      "CacheGetAllResponse\022:\n\010payloads\030\001 \003(\0132(." +
+      "proto.CacheGetAllResponse.PayloadsEntry\032" +
+      "G\n\rPayloadsEntry\022\013\n\003key\030\001 \001(\t\022%\n\005value\030\002" +
+      " \001(\0132\026.proto.WirePayloadList:\0028\0012L\n\013Wire" +
+      "Service\022=\n\016GetWirePayload\022\025.proto.Payloa" +
+      "dRequest\032\022.proto.WirePayload\"\0002\266\002\n\014Cache" +
+      "Service\022I\n\016GetWirePayload\022\030.proto.GetPay" +
+      "loadRequest\032\033.proto.CachePayloadResponse" +
+      "\"\000\022R\n\017PutWirePayloads\022\035.proto.CachePutPa" +
+      "yloadRequest\032\036.proto.CachePutPayloadResp" +
+      "onse\"\000\022D\n\tGetLength\022\031.proto.CacheLengthR" +
+      "equest\032\032.proto.CacheLengthResponse\"\000\022A\n\006" +
+      "GetAll\022\031.proto.CacheGetAllRequest\032\032.prot" +
+      "o.CacheGetAllResponse\"\000B$\n com.bscllc.de" +
+      "mo.skills.api.protoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -190,6 +217,30 @@ public final class WirePayloadOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_CacheGetInfoResponse_descriptor,
         new java.lang.String[] { "Info", });
+    internal_static_proto_CacheGetAllRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_proto_CacheGetAllRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_CacheGetAllRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_proto_WirePayloadList_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_proto_WirePayloadList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_WirePayloadList_descriptor,
+        new java.lang.String[] { "Payloads", });
+    internal_static_proto_CacheGetAllResponse_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_proto_CacheGetAllResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_CacheGetAllResponse_descriptor,
+        new java.lang.String[] { "Payloads", });
+    internal_static_proto_CacheGetAllResponse_PayloadsEntry_descriptor =
+      internal_static_proto_CacheGetAllResponse_descriptor.getNestedTypes().get(0);
+    internal_static_proto_CacheGetAllResponse_PayloadsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_proto_CacheGetAllResponse_PayloadsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

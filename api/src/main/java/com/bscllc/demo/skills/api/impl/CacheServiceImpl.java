@@ -7,7 +7,9 @@ import com.bscllc.demo.skills.cache.PayloadCache;
 import io.grpc.stub.StreamObserver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -82,4 +84,21 @@ public class CacheServiceImpl extends CacheServiceGrpc.CacheServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void getAll(CacheGetAllRequest request, StreamObserver<CacheGetAllResponse> responseObserver) {
+        Map<String, List<Payload>>map =  cache.getAll();
+        Map<String, WirePayloadList>wireMap = new HashMap<>();
+
+        map.entrySet().forEach(entry -> {
+            List<WirePayload>wplist = entry.getValue().stream().map(PayloadMap::payloadToWire).collect(Collectors.toList());
+
+            WirePayloadList wpl = WirePayloadList.newBuilder().addAllPayloads(wplist).build();
+
+            wireMap.put(entry.getKey(), wpl);
+        });
+
+        CacheGetAllResponse response = CacheGetAllResponse.newBuilder().putAllPayloads(wireMap).build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
 }

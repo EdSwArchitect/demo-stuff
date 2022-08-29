@@ -108,8 +108,22 @@ message CacheGetInfoResponse {
   string info = 1;
 }
 
+message CacheGetAllRequest {
+}
+
+message WirePayloadList {
+  repeated WirePayload payloads = 1;
+}
+
+
+message CacheGetAllResponse {
+  map<string, WirePayloadList> payloads = 1;
+
+}
+
 service CacheService {
   rpc GetWirePayload(GetPayloadRequest) returns (CachePayloadResponse) {}
   rpc PutWirePayloads(CachePutPayloadRequest) returns (CachePutPayloadResponse) {}
   rpc GetLength(CacheLengthRequest) returns (CacheLengthResponse) {}
+  rpc GetAll(CacheGetAllRequest) returns (CacheGetAllResponse) {}
 }
