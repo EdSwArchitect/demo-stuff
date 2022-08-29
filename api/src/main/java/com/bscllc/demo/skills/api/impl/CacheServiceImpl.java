@@ -1,7 +1,5 @@
 package com.bscllc.demo.skills.api.impl;
 
-import com.bscllc.demo.skills.api.CacheServiceClient;
-import com.bscllc.demo.skills.api.WireServiceServer;
 import com.bscllc.demo.skills.api.proto.*;
 import com.bscllc.demo.skills.api.util.PayloadMap;
 import com.bscllc.demo.skills.cache.Payload;
